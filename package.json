@@ -1,0 +1,28 @@
+{
+  "name": "rfactor-2-stream-center",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KChederz/rFactor-2-Stream-Center.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KChederz/rFactor-2-Stream-Center/issues"
+  },
+  "homepage": "https://github.com/KChederz/rFactor-2-Stream-Center#readme",
+  "devDependencies": {
+    "electron": "^1.8.3"
+  },
+  "dependencies": {
+    "bootstrap": "^4.0.0",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.12.9",
+    "tether": "^1.4.3"
+  }
+}
