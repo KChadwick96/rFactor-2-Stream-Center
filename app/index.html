@@ -3,13 +3,27 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="PC Stats Electron App">
+    <meta name="description" content="">
     <meta name="author" content="Ninja Labs">
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="./styles.css">
-    <title>rFactor 2 Stream Center PRE-RELEASE</title>
+    <title>rFactor 2 Stream Center BUGGY AF</title>
 </head>
 <body class="bg-dark">
+
+    <!-- <header class="bg-white">
+        <div class="d-flex justify-content-between">
+            <div>
+                yo
+            </div>
+            <div>
+                waddup
+            </div>
+            <div>
+                dude
+            </div>
+        </div>
+    </header> -->
 
     <div class="container-fluid mt-3">
         <div class="row" id="drivers">
@@ -20,11 +34,36 @@
         
     </div>
 
-    <footer class="fixed-bottom bg-dark">
+    <footer class="fixed-bottom text-center">
         <a class="navbar-brand p-0" href="#">
             <img src="../assets/img/ninja-labs-white.svg" width="200" height="55" class="d-inline-block align-top" alt="">
         </a>
     </footer>
+
+    <!-- Mustache templates -->
+    <script id="driver-template" type="text/template">
+        <div class="col-sm-6 col-md-4 col-lg-3 mb-2">
+            <div class="card driver {{selected}}" data-driver-slot="1">
+                <div class="card-body p-2">
+                    <h5 class="card-title d-inline">
+                        {{name}}
+                    </h5>
+                    <div class="w-100 my-1">
+                        {{buttons}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script id="camera-button-template" type="text/template">
+        <div class="w-50 d-inline-block px-1 pt-1">
+            <button class="btn btn-{{class}} btn-sm w-100">
+                {{ name }}
+            </button>
+        </div>
+    </script>
+    <!-- /Mustache templates -->
     
     <script src="renderer.js"></script>
     <script src="index.js"></script>

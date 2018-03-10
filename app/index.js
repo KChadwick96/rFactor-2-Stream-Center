@@ -1,4 +1,4 @@
-
+const Mustache = require('mustache');
 
 const CAMERAS = [
     {
@@ -45,34 +45,31 @@ renderDrivers();
 function renderDrivers() {
     const cameraButtons = getCameraButtons();
 
-    drivers.forEach((driver, index) => {
-        const live = (driver.live) ? '<span class="live">Live</span>' : '';
-        const html = `<div class="col-sm-6 col-md-4 col-lg-3 mb-2">
-            <div class="card" data-driver-slot="1">
-                <div class="card-body p-2">
-                    <h5 class="card-title d-inline">
-                        ${driver.name}
-                    </h5>
-                    ${live}
-                    <div class="w-100 mt-1">${cameraButtons}</div>
-                </div>
-            </div>
-        </div>`;
-        const element = $(html);
+    const template = $('#driver-template').html();
 
-        $('#drivers').append(element);
+    let driversHtml = '';
+    drivers.forEach((driver, index) => {
+        const selected = (driver.live) ? 'driver--selected' : '';
+        driversHtml += Mustache.to_html(template, {
+            name: driver.name,
+            selected,
+            buttons: cameraButtons
+        });
     });
+
+    $('#drivers').html(driversHtml);
 }
 
 function getCameraButtons() {
+    const template = $('#camera-button-template').html();
+
     let buttons = '';
     CAMERAS.forEach(camera => {
-        const html = `<div class="w-50 d-inline-block px-1 pt-1">
-            <button class="btn btn-${camera.class} btn-sm w-100">
-                ${camera.name}
-            </button>
-        </div>`;
-        buttons += html;
+        Mustache.render
+        buttons += Mustache.render(template, {
+            name: camera.name,
+            class: camera.class
+        });
     });
 
     return buttons;

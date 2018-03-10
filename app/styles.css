@@ -1,3 +1,20 @@
 .live {
     color: #ff0000;
 }
+
+.driver {
+    border-radius: 0;
+    background-color: #2d3238;
+    color: #FFF;
+    border: none;
+    box-shadow: #2b2b2b 0 0 4px 1px;
+}
+
+.driver--selected {
+    border: 2px solid #ff5100;
+}
+
+/* BOOTSTRAP OVERWRITES */
+.btn, .btn-sm, .btn-lg {
+    border-radius: 0;
+}
