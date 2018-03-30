@@ -11,24 +11,53 @@
 </head>
 <body class="bg-dark">
 
-    <!-- <header class="bg-white">
-        <div class="d-flex justify-content-between">
-            <div>
-                yo
-            </div>
-            <div>
-                waddup
-            </div>
-            <div>
-                dude
-            </div>
-        </div>
-    </header> -->
+    <div class="container-fluid px-0">
+        <div class="row">
+            <div class="col-sm-6 col-md-6" id="drivers">
+                <div class="driver mb-1">
+                    <div class="driver__position">
+                        1
+                    </div>
+                    <div class="driver__name pl-3">
+                        <h5 class="mb-0">Kieran Chadwick</h5>
+                    </div>
+                    <div class="driver__camera driver__camera--first">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <div class="driver__camera driver__camera--second">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <div class="driver__camera driver__camera--third">
+                        <i class="fas fa-video"></i>
+                    </div>
+                </div>
 
-    <div class="container-fluid mt-3">
-        <div class="row" id="drivers">
-            <!-- Dynamically generated -->
+                <div class="driver mb-1">
+                    <div class="driver__position">
+                        2
+                    </div>
+                    <div class="driver__name pl-3">
+                        <h5 class="mb-0">Craig Baxter</h5>
+                    </div>
+                    <div class="driver__camera driver__camera--first">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <div class="driver__camera driver__camera--second">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <div class="driver__camera driver__camera--third">
+                        <i class="fas fa-video"></i>
+                    </div>
+                </div>
+            </div>
         </div>
+
+
+        <!-- <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-6" class="drivers" id="drivers">
+                
+            </div>
+        </div> -->
 
         <hr>
         
@@ -42,30 +71,30 @@
 
     <!-- Mustache templates -->
     <script id="driver-template" type="text/x-handlebars-template">
-        <div class="col-sm-6 col-md-4 col-lg-3 mb-2">
-            <div class="card driver {{selected}}" data-driver-slot="1">
-                <div class="card-body p-2">
-                    <h5 class="card-title d-inline">
-                        {{name}}
-                    </h5>
-                    <div class="w-100 my-1">
-                        
-                    </div>
-                </div>
+        <div class="driver mb-1">
+            <div class="driver__position">
+                {{position}}
             </div>
+            <div class="driver__name pl-3">
+                <h5 class="mb-0">{{name}}</h5>
+            </div>
+            {{#cameras}}
+            {{> camera}}
+            {{/cameras}}
         </div>
     </script>
 
     <script id="camera-button-template" type="text/template">
-        <div class="w-50 d-inline-block px-1 pt-1">
-            <button class="btn btn-{{class}} btn-sm w-100">
-                {{ name }}
-            </button>
+        <div class="driver__camera driver__camera--{{number}}">
+            <i class="fas fa-video"></i>
         </div>
     </script>
     <!-- /Mustache templates -->
     
     <script src="renderer.js"></script>
     <script src="index.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js"
+        integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl"
+        crossorigin="anonymous"></script>
 </body>
 </html>
