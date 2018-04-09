@@ -1,4 +1,5 @@
 const Mustache = require('mustache');
+const SocketIO = require('socket.io');
 
 const CAMERAS = [{
     id: 'scv_nosecam',
@@ -26,14 +27,21 @@ const CAMERAS = [{
     class: 'info'
 }];
 
-const drivers = [
-    {name: 'Kieran Chadwick', live: false, position: 1},
-    {name: 'Craig Baxter', live: true, position: 2},
-    {name: 'Sam Carpenter', live: false, position: 3},
-    {name: 'Scott Davison', live: false, position: 4}
-];
+let drivers = [];
+let pause = false;
 
-renderDrivers();
+// create socket connection
+const io = SocketIO(80);
+io.on('connection', socket => {
+    console.log('Client connected');
+
+    socket.on('sessionData', data => {
+        drivers = data;
+        console.log(drivers);
+        if (!pause) this.renderDrivers();
+        pause = true;
+    });
+});
 
 function renderDrivers() {
     const template = $('#driver-template').html();
@@ -42,14 +50,12 @@ function renderDrivers() {
     let driversHtml = '';
     drivers.forEach((driver, index) => {
         const data = {
-            name: driver.name,
+            name: driver.driverName,
             position: driver.position,
-            selected: (driver.live) ? 'driver--selected' : '',
+            selected: (driver.focus) ? 'driver--selected' : '',
             cameras: CAMERAS
         }
         const partials = {camera: cameraPartial};
-        console.log(data);
-        console.log(partials);
         driversHtml += Mustache.to_html(template, data, partials);
     });
 
