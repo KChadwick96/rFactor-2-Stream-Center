@@ -2,29 +2,8 @@ const Mustache = require('mustache');
 const SocketIO = require('socket.io');
 
 const CAMERAS = [{
-    id: 'scv_nosecam',
-    name: 'Nosecam',
-    class: 'primary'
-},{
-    id: 'scv_swingman',
-    name: 'Swingman',
-    class: 'secondary'
-},{
-    id: 'scv_onboard001',
-    name: 'TCAM Left',
-    class: 'success'
-},{
-    id: 'scv_onboard002',
-    name: 'TCAM Rear',
-    class: 'danger'
-},{
-    id: 'scv_onboard003',
-    name: 'Left Airbox',
-    class: 'warning'
-},{
-    id: 'scv_onboard004',
-    name: 'Helicopter',
-    class: 'info'
+    id: 'SCV_TRACKSIDE',
+    name: 'Trackside'
 }];
 
 let drivers = [];
@@ -37,7 +16,6 @@ io.on('connection', socket => {
 
     socket.on('sessionData', data => {
         drivers = data;
-        console.log(drivers);
         if (!pause) this.renderDrivers();
         pause = true;
     });
@@ -51,6 +29,7 @@ function renderDrivers() {
     drivers.forEach((driver, index) => {
         const data = {
             name: driver.driverName,
+            slot_id: driver.slotID,
             position: driver.position,
             selected: (driver.focus) ? 'driver--selected' : '',
             cameras: CAMERAS
@@ -60,4 +39,14 @@ function renderDrivers() {
     });
 
     $('#drivers').html(driversHtml);
+
+    $('.driver__camera').click(function() {
+        const button = $(this);
+        const camera = button.data('cameraId');
+        const slotId = button.data('slotId');
+        console.log(camera);
+        console.log(slotId);
+    
+        io.emit('carSelect', {slot_id: slotId, camera});
+    });
 }
