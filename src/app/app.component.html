@@ -1,2 +1,13 @@
-<p>Connected/disconnected</p>
-<p>Waiting for data from overlay...</p>
+<div class="text-center mt-4 sc-pending" *ngIf="!_drivers">
+
+    <p>
+        Local Server Status
+        <span class="badge badge-danger">Disconnected</span>
+    </p>
+
+    <p>Waiting for data from overlay...</p>
+</div>
+
+<div class="fixed-bottom bg-dark text-center sc-footer">
+    <img src="/assets/img/brand.svg">
+</div>
