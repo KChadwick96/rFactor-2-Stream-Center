@@ -1,13 +1,51 @@
-<div class="text-center mt-4 sc-pending" *ngIf="!_drivers">
-
-    <p>
+<div class="sc-debug">
+    <p class="mb-0">
         Local Server Status
         <span class="badge badge-danger">Disconnected</span>
     </p>
-
-    <p>Waiting for data from overlay...</p>
+    <p class="mb-0">Waiting for data from overlay...</p>
 </div>
 
-<div class="fixed-bottom bg-dark text-center sc-footer">
-    <img src="/assets/img/brand.svg">
+<div class="sc-main">
+    <div class="sc-header">
+        <h1 class="sc-header__title">Leaderboard</h1>
+        <h2 class="sc-header__subtitle">Practice 1</h2>
+    </div>
+
+    <table class="table sc-entries-table">
+        <thead>
+            <tr>
+                <th>Pos</th>
+                <th>Driver</th>
+                <th>Interval</th>
+                <th>Stops</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Kieran Chadwick</td>
+                <td>Leader</td>
+                <td>1</td>
+                <td>
+                    <button>Go</button>
+                </td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Kieran Chadwick</td>
+                <td>Leader</td>
+                <td>1</td>
+                <td>
+                    <button>Go</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+<div class="fixed-bottom text-center sc-footer">
+    <img src="../assets/img/brand.svg">
 </div>
