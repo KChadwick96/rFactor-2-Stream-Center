@@ -15,10 +15,10 @@ export class AppComponent {
   constructor() {}
 
   ngOnInit() {
-    this._socket = SocketIO(this.SOCKET_URL);
+    /* this._socket = SocketIO(this.SOCKET_URL);
     this._socket.on('connect', () => console.log('connected to socket server'));
     this._socket.on('disconnect', () => console.log('disconnected from socket server'));
-    this._socket.on('sessionData', this._receivedSessionData);
+    this._socket.on('sessionData', this._receivedSessionData); */
   }
 
   _receivedSessionData(data) {
